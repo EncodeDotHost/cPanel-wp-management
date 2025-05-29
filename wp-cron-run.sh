@@ -6,4 +6,4 @@ do
         echo "***User $i / $domain ***";
         su - $i -c "wp cron event run --due-now --path=$path"
         echo "";
-done 
+done

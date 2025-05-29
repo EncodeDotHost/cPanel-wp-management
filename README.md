@@ -6,7 +6,7 @@ WordPress Management for cPanel Servers contains a series of scripts designed to
 1. cPanel server with root/su access
 2. WP-CLI - see http://wp-cli.org/ for installation instructions
 
-These scripts cycle through all accounts on the server, assuming they use WordPress on the account's main site.  Accounts can be excluded from these scripts by editing the "nonwp" file.  While these scripts should be called with su/root privliges, they will actually be run under each individual user account as they cycle.  Therefore accounts wished to utilize these scripts must have shell access enabled.
+These scripts cycle through all accounts on the server, assuming they use WordPress on the account's main site.  Accounts can be excluded from these scripts by editing the "nonwp" file (Accounts need to be either on  a new line each or seperated with a | pipe).  While these scripts should be called with su/root privliges, they will actually be run under each individual user account as they cycle.  Therefore accounts wished to utilize these scripts must have shell access enabled.
 
 ## Scripts and Instructions
 
@@ -36,3 +36,5 @@ These scripts cycle through all accounts on the server, assuming they use WordPr
 `./auto-plugin.update.sh` - Updates all plugins that have updates available on the account.
 
 `./auto-theme-update.sh` - Updates all themes that have updates available on the account.
+
+`./wp-cron-run.sh` - Runs all due WordPress cron events for each account. This is useful for ensuring scheduled tasks are executed properly across all WordPress installations.
