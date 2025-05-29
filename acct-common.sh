@@ -4,7 +4,7 @@ accounts=$(for user in $(cat /etc/userdomains | awk '{print $2}' | sort | uniq);
     if [ -f "/var/cpanel/userdata/$user/main" ]; then
         domain=$(grep "^domain:" "/var/cpanel/userdata/$user/main" | awk '{print $2}')
         # Skip if either username or domain is in nonwp
-        if ! grep -qE "^$user$|^$domain$" "$(dirname "$0")/nonwp"; then
+        if ! grep -qE "^(.*\|)?$user(\|.*)?$|^(.*\|)?$domain(\|.*)?$" "$(dirname "$0")/nonwp"; then
             # Output format: username documentroot (space separated instead of colon)
             echo "$user $(grep "^documentroot:" "/var/cpanel/userdata/$user/main" | awk '{print $2}')"
         fi
